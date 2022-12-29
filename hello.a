@@ -10,10 +10,22 @@
 ; Typical initialization routine
 ; ('start' is a label because it's on the left margin)
 Start:
-	lda #100
-        adc #5
-        sbc #10
-        
+; 	Ex1
+	lda #$82
+        ldx #82
+        ldy $82
+;	Ex2
+	lda #$0a
+        ldx #%11111111
+        sta $80
+        stx $81
+;	Ex3
+	lda #15
+        tax
+        tay
+        txa
+        tya
+                
         jmp Start
 	
 ; Here we skip to address $FFFC and define a word with the
