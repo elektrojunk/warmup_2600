@@ -25,7 +25,42 @@ Start:
         tay
         txa
         tya
-                
+        ldx #6
+        txa
+        tay
+;	Ex4	
+	lda #100
+        adc #5
+        sbc #10
+
+;	Ex5
+	clc       
+        lda #$a
+        ldx #%1010
+        sta $80
+        stx $81
+        lda #10
+        adc $80
+        adc $81
+        
+;	Ex6
+	lda #1
+        ldx #2
+        ldy #3
+        inx
+        iny
+        clc
+        adc #1
+        
+        dex
+        dey
+        clc
+        sbc #1
+        
+        
+
+
+
         jmp Start
 	
 ; Here we skip to address $FFFC and define a word with the
