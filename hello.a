@@ -34,14 +34,16 @@ Start:
         sbc #10
 
 ;	Ex5
-	clc       
+	clc
         lda #$a
         ldx #%1010
         sta $80
         stx $81
         lda #10
+        clc
         adc $80
         adc $81
+        sta $82
         
 ;	Ex6
 	lda #1
@@ -54,13 +56,36 @@ Start:
         
         dex
         dey
-        clc
+        
+        sec
         sbc #1
         
+;	Ex7
+	lda #10
+        sta $80
+        inc $80
+        dec $80
         
+;	Ex8
+;       80 81 82 83 84 85 86 87 88 89 8a
+;        0 1  2  3  4  5  6   7  8 9  a
+	ldy #10
+loop:
+        tya
+        sta $80,y
+        dey
+;        bne loop
+	bpl loop
+;        tya
+;        sta $80,y
 
-
-
+;Ex 9
+	lda #1
+loop1:
+	clc
+        adc #1
+        cmp #10,loop1
+	beq loop1
         jmp Start
 	
 ; Here we skip to address $FFFC and define a word with the
